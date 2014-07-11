@@ -120,17 +120,19 @@ one below.  The customize interface of `=org-babel-load-languages='
 contains an up to date list of the currently supported languages.
 
 #+NAME: babel
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   (sh . t)))
+   (sh . t)
+   (R . t)
+   (sql . t)))
 #+END_SRC
 
 You are encouraged to add the following to your personal configuration
 although it is not added by default as a security precaution.
 
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 (setq org-confirm-babel-evaluate nil)
 #+END_SRC
 
@@ -188,7 +190,35 @@ directory) file for information on the functions, and see
 
 Code blocks can be loaded into the library of babel from any Org-mode
 file using the `org-babel-lob-ingest' function.
+* Defaults for babel code blocks.
+Below are some defaults for R code blocks.
+#+BEGIN_SRC emacs-lisp
+(setq org-babel-default-header-args
+      (cons '(:noweb . "yes")
+            (assq-delete-all :noweb org-babel-default-header-args)))
 
+(setq org-babel-default-header-args:R
+      (cons '(:session . "*R*")
+            (assq-delete-all :session org-babel-default-header-args)))
+
+(setq org-babel-default-header-args:R
+      (cons '(:results . "output org raw replace")
+            (assq-delete-all :results org-babel-default-header-args:R)))
+
+(setq org-babel-default-header-args:R
+      (cons '(:exports . "results")
+            (assq-delete-all :exports org-babel-default-header-args:R)))
+
+(setq org-babel-default-header-args:emacs-lisp
+      (cons '(:results . "value")
+            (assq-delete-all :results org-babel-default-header-args)))
+#+END_SRC
+Hightlight code in MySQL cobe blocks
+#+BEGIN_SRC emacs-lisp
+(add-hook 'sql-mode-hook
+          (lambda ()
+            (sql-highlight-mysql-keywords)))
+#+END_SRC
 * Htmlize
   :PROPERTIES:
   :CUSTOM_ID: htmlize
