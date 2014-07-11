@@ -118,7 +118,7 @@ Another problem with emacs on Mac OX X is the keybindings to =Meta= and
 to bind Mac's =Command= and =Option= key to Emacs's =Meta= and =Control= key,
 respectively.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'control))
