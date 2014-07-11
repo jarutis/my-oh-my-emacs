@@ -1,0 +1,71 @@
+#+TITLE: My ess-mode config
+#+OPTIONS: toc:2 num:nil ^:nil
+
+* Ess-mode
+  :PROPERTIES:
+  :CUSTOM_ID: ess-mode
+  :END:
+
+Some defaults for ESS mode.
+
+#+NAME: ess-
+#+BEGIN_SRC emacs-lisp
+(defun ome-ess-setup()
+  (require 'ess-site)
+  (setq ess-use-auto-complete t)
+  (setq ess-ask-for-ess-directory nil)
+  (setq ess-delete-dump-files t)
+  (setq ansi-color-for-comint-mode 'filter)
+  (setq comint-prompt-read-only t)
+  (setq comint-scroll-to-bottom-on-input t)
+  (setq comint-scroll-to-bottom-on-output t)
+  (setq comint-move-point-for-output t)
+  (setq inferior-julia-program-name "/Users/jarutis/dev/julia/usr/bin/julia-basic")
+  (setq inferior-R-program-name "/usr/local/bin/R")
+
+  (add-hook 'ess-mode-hook
+        '(lambda()
+           (local-set-key [(shift return)] 'my-ess-eval)))
+  (add-hook 'inferior-ess-mode-hook
+        '(lambda()
+           (local-set-key [s-<up>] 'comint-previous-input)
+           (local-set-key [s-<down>] 'comint-next-input))))
+  (global-set-key  (kbd "\C-x c") 'clear-shell)
+(ome-install 'ess)
+#+END_SRC
+
+[[http://kieranhealy.org/blog/archives/2009/10/12/make-shift-enter-do-a-lot-in-ess/][Make Shift-Enter do a lot in ESS]]
+
+#+NAME: ess-smart-shift
+#+BEGIN_SRC emacs-lisp
+(defun my-ess-start-R ()
+  (interactive)
+  (if (not (member "*R*" (mapcar (function buffer-name) (buffer-list))))
+      (progn
+	(delete-other-windows)
+	(setq w1 (selected-window))
+	(setq w1name (buffer-name))
+	(setq w2 (split-window w1 nil t))
+	(R)
+	(set-window-buffer w2 "*R*")
+	(set-window-buffer w1 w1name))))
+(defun my-ess-eval ()
+  (interactive)
+  (my-ess-start-R)
+  (if (and transient-mark-mode mark-active)
+      (call-interactively 'ess-eval-region)
+    (call-interactively 'ess-eval-line-and-step)))
+#+END_SRC
+
+Clear console command
+
+#+NAME: ess-clear-console
+#+BEGIN_SRC emacs-lisp
+
+(defun clear-shell ()
+  (interactive)
+  (let ((old-max comint-buffer-maximum-size))
+    (setq comint-buffer-maximum-size 0)
+    (comint-truncate-buffer)
+    (setq comint-buffer-maximum-size old-max)))
+#+END_SRC
