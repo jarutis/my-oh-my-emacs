@@ -19,6 +19,7 @@ el-get
 
 # the generated el files by org-babel
 ome*el
+jome*el
 *ome*part*el
 *ome*part*org
 
