@@ -196,7 +196,6 @@ Below are some defaults for R code blocks.
 (setq org-babel-default-header-args
       (cons '(:noweb . "yes")
             (assq-delete-all :noweb org-babel-default-header-args)))
-
 (setq org-babel-default-header-args:R
       (cons '(:session . "*R*")
             (assq-delete-all :session org-babel-default-header-args)))
@@ -208,10 +207,6 @@ Below are some defaults for R code blocks.
 (setq org-babel-default-header-args:R
       (cons '(:exports . "results")
             (assq-delete-all :exports org-babel-default-header-args:R)))
-
-(setq org-babel-default-header-args:emacs-lisp
-      (cons '(:results . "value")
-            (assq-delete-all :results org-babel-default-header-args)))
 #+END_SRC
 Hightlight code in MySQL cobe blocks
 #+BEGIN_SRC emacs-lisp
