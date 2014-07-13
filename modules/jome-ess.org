@@ -69,3 +69,27 @@ Clear console command
     (comint-truncate-buffer)
     (setq comint-buffer-maximum-size old-max)))
 #+END_SRC
+
+* Auto Yasnippet for ESS
+r  :PROPERTIES:
+  :CUSTOM_ID: r-autoyas
+  :END:
+
+-autoyas is a small ESS complement. It provides automatically created
+yasnippets for R function argument lists.
+
+To expand the snipped type the function name and them press TAB.
+
+To jump from field to feild press TAB. If you did not change the field, the
+parameter will be deleted from this list.
+
+To exit the snipped and delete remaining arguments, press C-g
+
+#+NAME: r-autoyas :tangle no
+#+BEGIN_SRC emacs-lisp
+(defun ome-r-autoyas-setup()
+  (require 'r-autoyas)
+  (add hook 'ess-mode-hook 'r-autoyas-ess-activate))
+
+(ome-install 'r-autoyas)
+#+END_SRC
