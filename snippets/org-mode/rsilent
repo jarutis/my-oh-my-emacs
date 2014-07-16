@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: rsilent
+# key: rsilent
+# --
+#+begin_src R :results silent
+$0
+#+end_src
