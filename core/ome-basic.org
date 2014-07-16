@@ -50,8 +50,10 @@ This is part of the [[https://github.com/xiaohanyu/oh-my-emacs][oh-my-emacs]].
 ;; auto revert buffer globally
 (global-auto-revert-mode t)
 ;; set TAB and indention
-(setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
 ;; y or n is suffice for a yes or no question
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; always add new line to the end of a file
@@ -265,6 +267,19 @@ extension for GNU Emacs 24.
 (ome-install 'flycheck)
 #+END_SRC
 
+* Framemove
+Similar to WindMove, this package allows you to move focus between frames using
+arrow keys. Additionally, it can hook into WindMove’s keys so that when you
+can’t move between windows (because you reached the edge of the frame), the
+next event jumps frames.
+
+#+NAME: framemove
+#+BEGIN_SRC emacs-lisp
+(defun ome-framemove-setup ()
+  (setq framemove-hook-into-windmove t))
+
+(ome-install 'framemove)
+#+END_SRC
 * Todo
 ** Flycheck
 - Customizable prefix key, see https://github.com/flycheck/flycheck/issues/223.
