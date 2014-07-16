@@ -70,6 +70,13 @@ Clear console command
     (setq comint-buffer-maximum-size old-max)))
 #+END_SRC
 
+Tabs
+
+#+NAME: ess-tabs
+#+BEGIN_SRC emacs-lisp
+  (setq ess-default-style 'DEFAULT)
+#+END_SRC
+
 * Auto Yasnippet for ESS
 r  :PROPERTIES:
   :CUSTOM_ID: r-autoyas
@@ -85,8 +92,8 @@ parameter will be deleted from this list.
 
 To exit the snipped and delete remaining arguments, press C-g
 
-#+NAME: r-autoyas :tangle no
-#+BEGIN_SRC emacs-lisp
+#+NAME: r-autoyas
+#+BEGIN_SRC emacs-lisp :tangle no
 (defun ome-r-autoyas-setup()
   (require 'r-autoyas)
   (add hook 'ess-mode-hook 'r-autoyas-ess-activate))
