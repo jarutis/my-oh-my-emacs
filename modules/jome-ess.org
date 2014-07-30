@@ -10,28 +10,34 @@ Some defaults for ESS mode.
 
 #+NAME: ess-
 #+BEGIN_SRC emacs-lisp
-(defun ome-ess-setup()
-  (require 'ess-site)
-  (setq ess-use-auto-complete t)
-  (setq ess-ask-for-ess-directory nil)
-  (setq ess-delete-dump-files t)
-  (setq ansi-color-for-comint-mode 'filter)
-  (setq comint-prompt-read-only t)
-  (setq comint-scroll-to-bottom-on-input t)
-  (setq comint-scroll-to-bottom-on-output t)
-  (setq comint-move-point-for-output t)
-  (setq inferior-julia-program-name "/Users/jarutis/dev/julia/usr/bin/julia-basic")
-  (setq inferior-R-program-name "/usr/local/bin/R")
+  (defun ome-ess-setup()
+    (require 'ess-site)
+    (setq ess-use-auto-complete t)
+    (setq ess-ask-for-ess-directory nil)
+    (setq ess-delete-dump-files t)
+    (setq ansi-color-for-comint-mode 'filter)
+    (setq comint-prompt-read-only t)
+    (setq comint-scroll-to-bottom-on-input t)
+    (setq comint-scroll-to-bottom-on-output t)
+    (setq comint-move-point-for-output t)
 
-  (add-hook 'ess-mode-hook
-        '(lambda()
-           (local-set-key [(shift return)] 'my-ess-eval)))
-  (add-hook 'inferior-ess-mode-hook
-        '(lambda()
-           (local-set-key [s-<up>] 'comint-previous-input)
-           (local-set-key [s-<down>] 'comint-next-input))))
-  (global-set-key  (kbd "\C-x c") 'clear-shell)
-(ome-install 'ess)
+    (add-hook 'ess-mode-hook
+          '(lambda()
+             (local-set-key [(shift return)] 'my-ess-eval)))
+    (add-hook 'inferior-ess-mode-hook
+          '(lambda()
+             (local-set-key [s-<up>] 'comint-previous-input)
+             (local-set-key [s-<down>] 'comint-next-input))))
+    (global-set-key  (kbd "\C-x c") 'clear-shell)
+  (ome-install 'ess)
+#+END_SRC
+
+Indent defualt to 2
+
+#+NAME: ess-
+#+BEGIN_SRC emacs-lisp
+  (setq ess-default-style 'DEFAULT)
+  (setq ess-indent-level 2)
 #+END_SRC
 
 [[http://kieranhealy.org/blog/archives/2009/10/12/make-shift-enter-do-a-lot-in-ess/][Make Shift-Enter do a lot in ESS]]
