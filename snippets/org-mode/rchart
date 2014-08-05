@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: rchart
+# key: rchart
+# --
+#+begin_src R :results output graphics :file plots/$1 :width 600 :height 300
+$0
+#+end_src
