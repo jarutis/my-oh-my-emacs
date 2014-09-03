@@ -240,11 +240,13 @@ fallback. But I do suggest you to take some time to be familiar with helm.
           (t "locate %s")))
   (global-set-key (kbd "C-x c g") 'helm-do-grep)
   (global-set-key (kbd "C-x c o") 'helm-occur)
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-x C-f") 'helm-find-files))
+  (global-set-key (kbd "C-x C-f") 'find-file))
 
 (ome-install 'helm)
 
+(defun ome-smex-setup ()
+  (global-set-key (kbd "M-x") 'smex))
+(ome-install 'smex)
 #+END_SRC
 * Yasnippet
   :PROPERTIES:

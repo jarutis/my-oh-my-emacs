@@ -76,17 +76,18 @@ Emacs session.
 
 #+NAME: evil
 #+BEGIN_SRC emacs-lisp
-(defun ome-evil-setup ()
-  (setq evil-esc-delay 0)
-  (setq evil-auto-indent t)
-  (setq evil-regexp-search t)
-  (setq evil-want-C-i-jump t)
-  (add-hook 'text-mode-hook 'turn-on-evil-mode)
-  (add-hook 'prog-mode-hook 'turn-on-evil-mode)
-  (add-hook 'comint-mode-hook 'turn-on-evil-mode)
-  (add-hook 'Info-mode-hook 'turn-off-evil-mode))
+  (defun ome-evil-setup ()
+    (modify-syntax-entry ?_ "w")
+    (setq evil-esc-delay 0)
+    (setq evil-auto-indent t)
+    (setq evil-regexp-search t)
+    (setq evil-want-C-i-jump t)
+    (add-hook 'text-mode-hook 'turn-on-evil-mode)
+    (add-hook 'prog-mode-hook 'turn-on-evil-mode)
+    (add-hook 'comint-mode-hook 'turn-on-evil-mode)
+    (add-hook 'Info-mode-hook 'turn-off-evil-mode))
 
-(ome-install 'evil)
+  (ome-install 'evil)
 #+END_SRC
 
 * Evil-leader

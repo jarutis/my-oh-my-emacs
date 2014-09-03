@@ -489,6 +489,8 @@ you really need it.
 (ome-load "modules/ome-ruby.org")
 ;;(ome-load "modules/ome-ocaml.org")
 (ome-load "modules/jome-ess.org")
+(ome-load "modules/jome-files.org")
+(ome-load "modules/jome-pig.org")
 ;;(ome-load "modules/ome-tex.org")
 ;;(ome-load "modules/ome-web.org")
 ;;(ome-load "modules/ome-experimental.org" "smooth-scrolling" "sublimity")

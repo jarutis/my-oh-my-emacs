@@ -1,0 +1,15 @@
+#+TITLE: Oh My Emacs Basic
+#+OPTIONS: toc:nil num:nil ^:nil
+
+* Tramp
+Faster than the default scp
+#+NAME: tramp
+#+BEGIN_SRC emacs-lisp
+(setq tramp-default-method "ssh")
+#+END_SRC
+* Dired plus
+
+#+NAME: diredplus
+#+BEGIN_SRC emacs-lisp
+(ome-install 'dired+)
+#+END_SRC
