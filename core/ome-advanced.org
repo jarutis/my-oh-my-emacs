@@ -77,7 +77,6 @@ Emacs session.
 #+NAME: evil
 #+BEGIN_SRC emacs-lisp
   (defun ome-evil-setup ()
-    (modify-syntax-entry ?_ "w")
     (setq evil-esc-delay 0)
     (setq evil-auto-indent t)
     (setq evil-regexp-search t)
