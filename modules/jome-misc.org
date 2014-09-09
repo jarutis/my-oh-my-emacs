@@ -1,0 +1,5 @@
+* Misc
+#+NAME: words
+#+BEGIN_SRC emacs-lisp
+  (modify-syntax-entry ?_ "w")
+#+END_SRC
