@@ -53,6 +53,7 @@ ESS specific paths.
 
 #+NAME: vinted
 #+BEGIN_SRC emacs-lisp
+(with-eval-after-load "ess"
   (setq inferior-julia-program-name "/Users/jarutis/dev/julia/usr/bin/julia-basic")
-  (setq inferior-R-program-name "/usr/local/bin/R")
+  (setq inferior-R-program-name "/usr/local/bin/R"))
 #+END_SRC

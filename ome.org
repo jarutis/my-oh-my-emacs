@@ -488,6 +488,8 @@ you really need it.
   (ome-load "modules/ome-python.org")
   (ome-load "modules/ome-ruby.org")
   ;;(ome-load "modules/ome-ocaml.org")
+ ;; (when (string= system-name "Jonass-MacBook-Pro.local")
+    (ome-load "modules/jome-vinted.org");;)
   (ome-load "modules/jome-ess.org")
   (ome-load "modules/jome-files.org")
   (ome-load "modules/jome-pig.org")
@@ -497,8 +499,6 @@ you really need it.
   ;;(ome-load "modules/ome-experimental.org" "smooth-scrolling" "sublimity")
   (ome-load "modules/jome-misc.org")
 
-  (when (string= system-name "Jonass-MacBook-Pro.local")
-    (ome-load "modules/jome-vinted.org"))
 #+END_SRC
 
 ** Load User/System Specific Files

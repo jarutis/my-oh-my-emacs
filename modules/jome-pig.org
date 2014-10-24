@@ -3,8 +3,9 @@
 Attemp tu configure pig through tramp.
 #+NAME: diredplus
 #+BEGIN_SRC emacs-lisp
-  ;; (defun ome-pig-mode-setup()
-  (require 'hive)
+  ;; (ome-install 'hive)                     ;
+
+  (defun ome-pig-mode-setup()
   (require 'pig-mode)
   (setq pig-executable "pig")
   (setq pig-executable-options '("-x" "mapreduce" "-useHCatalog" "-stop_on_failure"))
@@ -15,7 +16,7 @@ Attemp tu configure pig through tramp.
   (add-hook 'pig-mode-hook
             '(lambda()
                (local-set-key [(shift return)] 'pig-eval-line-and-next)))
-
+  )
   ;; (autoload 'pig-snippets-initialize "pig-snippets" nil nil nil)
   ;; (eval-after-load 'yasnippet '(pig-snippets-initialize))
 
@@ -25,5 +26,4 @@ Attemp tu configure pig through tramp.
   ;; (defun ome-pig-mode-setup()
   ;; )
 
-  (ome-install 'hive)
 #+END_SRC
